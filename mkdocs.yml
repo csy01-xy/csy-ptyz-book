@@ -1,0 +1,10 @@
+site_name: 小书
+theme:
+  name: material
+  language: zh
+
+nav:
+  - 首页: index.md
+  - 学习经验: first.md
+  - (留作未来扩展): about.md # 可以在 docs 文件夹内创建一个 about.md 占位
+
