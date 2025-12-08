@@ -20,9 +20,12 @@ theme:
       toggle:
         icon: material/brightness-4 # 深色图标
         name: 切换至亮色模式
+
+markdown_extensions:
+  - markdown.extensions.extra # 包含了删除线
+  - pymdownx.mark             # 开启高亮功能
+
 nav:
   - 首页: index.md
-  - 学习经验: first.md
-  - (留作未来扩展): about.md
   - 测试页: test.md
 
