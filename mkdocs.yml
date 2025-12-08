@@ -57,6 +57,27 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.arithmatex     # LaTeX 数学公式 ($\color{#5AA}{...}$)
 
+markdown_extensions:
+  # 1. 基础增强和列表修复
+  - markdown.extensions.extra  # 包含删除线、表格、脚注、定义列表、属性列表
+  - markdown.extensions.footnotes # 确保脚注完全独立启用
+  - markdown.extensions.sane_lists # 修复列表嵌套和格式问题
+  
+  # 2. PyMdown Extensions (Material主题的专业增强包)
+  - pymdownx.mark              # 启用高亮 (==高亮==)
+  - pymdownx.tilde             # 启用上下标 (x^2^, CuSO~4~)
+  - pymdownx.superfences       # 增强代码块和块嵌套
+  - pymdownx.inlinehilite      # 行内代码高亮
+  - pymdownx.highlight:        # 代码块高亮
+      anchor_linenums: true
+  - pymdownx.keys              # 启用键盘按键提示
+  - pymdownx.arithmatex:       # 启用 LaTeX 数学公式渲染 (支持颜色代码)
+      generic: true
+  - pymdownx.emoji:           # 表情符号支持
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+
 nav:
   - 首页: index.md
   - 测试页: test.md
