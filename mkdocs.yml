@@ -19,18 +19,11 @@ theme:
       accent: amber           # 强调色：琥珀色
       toggle:
         icon: material/brightness-4 # 深色图标
-        name: 切换至亮色模式s
-
-
-site_url: https://csy0101.gitee.io/ptyz/ 
-repo_url: https://gitee.com/csy0101/ptyz
-remote_name: gitee
-branch: gh-pages
-site_dir: site
+        name: 切换至亮色模式
 
 
 
-
+repo_url: https://github.com/csy01-xy/csy-ptyz-book
 
 markdown_extensions:
   # 1. 基础语法增强 (解决表格、脚注、删除线、列表问题)
