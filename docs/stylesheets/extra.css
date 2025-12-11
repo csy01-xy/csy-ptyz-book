@@ -1,0 +1,124 @@
+/* ==============================================
+   1. Logo 设置 
+   ============================================== */
+.md-header__button.md-logo img {
+    background-color: transparent !important;
+    height: 32px;
+    width: auto;
+    margin-top: 2px;
+}
+.md-nav__source .md-icon img {
+    background-color: transparent !important;
+    height: 48px;
+    width: auto;
+}
+
+/* ==============================================
+   2. Waline 评论区美化 (最终审美优化版)
+   ============================================== */
+#waline {
+    margin-top: 0; 
+    padding: 0;
+    --waline-theme-color: var(--md-primary-fg-color);
+}
+
+.wl-editor {
+    border-radius: 16px !important;
+    border: 1px solid var(--md-default-fg-color--lightest) !important;
+    padding: 16px !important;
+    min-height: 80px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+    transition: all 0.3s ease;
+}
+.wl-editor:focus-within {
+    border-color: var(--md-primary-fg-color) !important;
+    box-shadow: 0 4px 16px rgba(var(--md-primary-fg-color--rgb), 0.15) !important;
+}
+
+/* --- Reaction 容器：居中与间距 --- */
+.wl-reaction {
+    display: flex !important;
+    justify-content: center !important; 
+    flex-wrap: wrap !important;
+    
+    gap: 18px !important; 
+    
+    margin-bottom: 24px !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+/* 隐藏 Ref 标题 */
+.wl-reaction-title { display: none !important; }
+
+/* --- 胶囊按钮样式 --- */
+.wl-reaction-item {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    background: rgba(128, 128, 128, 0.08) !important;
+    border: 1px solid transparent !important;
+    border-radius: 50px !important;
+    
+    padding: 6px 18px !important;
+    margin: 0 !important; 
+    height: 38px !important; 
+    
+    flex: none !important;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important; 
+}
+
+/* 悬停 */
+.wl-reaction-item:hover {
+    transform: translateY(-4px); 
+    background: #fff !important;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08) !important;
+}
+[data-md-color-scheme="slate"] .wl-reaction-item:hover {
+    background: rgba(255,255,255,0.15) !important;
+}
+
+/* --- Active 状态 (实心高亮) --- */
+
+/* 左侧3个 (积极)：主题色 */
+.wl-reaction-item:nth-of-type(-n+3).active {
+    background: var(--md-primary-fg-color) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 12px rgba(var(--md-primary-fg-color--rgb), 0.4) !important;
+    transform: scale(1.08);
+}
+
+/* 右侧3个 (消极)：警示红 */
+.wl-reaction-item:nth-of-type(n+4).active {
+    background: #ff5252 !important;
+    color: #fff !important;
+    box-shadow: 0 4px 12px rgba(255, 82, 82, 0.4) !important;
+    transform: scale(1.08);
+}
+
+/* 图标 */
+.wl-reaction-img {
+    display: inline-block !important;
+    height: 19px !important;
+    width: 19px !important;
+    margin-right: 7px !important; 
+    vertical-align: middle !important;
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+}
+
+.wl-reaction-text {
+    font-size: 13px !important;
+    font-weight: bold !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+}
+
+.wl-power { display: none !important; }
+.wl-btn.primary { 
+    border-radius: 50px !important; 
+    padding: 8px 26px !important;
+    border: none !important; 
+    font-weight: bold;
+}

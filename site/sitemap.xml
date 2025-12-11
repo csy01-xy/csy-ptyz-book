@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://csy0101.gitee.io/ptyz/</loc>
+         <lastmod>2025-12-10</lastmod>
+    </url>
+    <url>
+         <loc>https://csy0101.gitee.io/ptyz/404/</loc>
+         <lastmod>2025-12-10</lastmod>
+    </url>
+    <url>
+         <loc>https://csy0101.gitee.io/ptyz/test/</loc>
+         <lastmod>2025-12-10</lastmod>
+    </url>
 </urlset>

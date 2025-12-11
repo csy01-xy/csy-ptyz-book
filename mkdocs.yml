@@ -1,32 +1,52 @@
 site_name: 小书
+site_url: https://csy01-xy.github.io/csy-ptyz-book/
+repo_name: csy-ptyz-book
+repo_url: https://github.com/csy01-xy/csy-ptyz-book
+copyright: Copyright &copy; 2025~now csy
+
 theme:
   name: material
   language: zh
+  custom_dir: overrides
+
+  # 【重要】必须确保 assets 文件夹里是处理好的透明背景 logo.png
+  logo: assets/logo.png
+  favicon: assets/logo.png?v=1.0
+
+  features:
+    - navigation.top
+    - navigation.expand
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
   palette:
-    # 1. 日间模式 (用户设备设置为亮色主题时默认启用)
+    # 亮色模式
     - media: "(prefers-color-scheme: light)"
-      scheme: default         # 使用亮色主题
-      primary: teal           # 主色调：青色 
-      accent: lime            # 强调色：柠檬绿
+      scheme: default
+      primary: blue grey       # 蓝灰顶栏 (衬托红色校徽)
+      accent: deep orange      # 深橙色链接
       toggle:
-        icon: material/brightness-7 # 亮色图标
-        name: 切换至深色模式
-
-    # 2. 深色模式 (用户设备设置为深色主题时默认启用)
+        icon: material/brightness-7
+        name: 切换到深色模式
+    # 深色模式
     - media: "(prefers-color-scheme: dark)"
-      scheme: slate           # 使用深色主题
-      primary: blue grey      # 主色调：蓝灰色
-      accent: amber           # 强调色：琥珀色
+      scheme: slate
+      primary: blue grey
+      accent: deep orange
       toggle:
-        icon: material/brightness-4 # 深色图标
-        name: 切换至亮色模式
+        icon: material/brightness-4
+        name: 切换到浅色模式
 
+extra_css:
+  - stylesheets/extra.css
 
-
-repo_url: https://github.com/csy01-xy/csy-ptyz-book
+plugins:
+  - search:
+      lang: zh
 
 markdown_extensions:
-  # 1. 基础语法增强 (解决表格、脚注、删除线、列表问题)
   - abbr
   - attr_list
   - def_list
@@ -36,40 +56,36 @@ markdown_extensions:
   - toc:
       permalink: true
   - admonition
-
-  # 2. PyMdown 扩展 (解决高亮、上下标、键盘按键等问题)
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.betterem:
       smart_enable: all
-  - pymdownx.caret:             # 开启上标 (^text^)
-  - pymdownx.mark:              # 开启高亮 (==text==)
-  - pymdownx.tilde:             # 开启下标 (~text~) 和 删除线 (~~text~~)
-  - pymdownx.keys               # 键盘按键 (++ctrl+c++)
-  - pymdownx.tasklist:          # 任务列表 [x]
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.keys
+  - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.superfences:       # 解决代码块、多层嵌套问题 (关键！)
+  - pymdownx.superfences:
       preserve_tabs: true
-  - pymdownx.details            # 折叠详情页 (??? note)
-  - pymdownx.tabbed:            # 选项卡
+  - pymdownx.details
+  - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.emoji:             # 表情支持 :smile:
+  - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.highlight:         # 代码高亮增强
+  - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  - pymdownx.inlinehilite       # 行内代码高亮
+  - pymdownx.inlinehilite
+  - pymdownx.smartsymbols
 
-  # 3. 数学公式支持 (解决 LaTeX 问题)
-  - pymdownx.arithmatex:
-      generic: true
-
-# 4. 必须添加的 JavaScript (让数学公式生效的关键)
 extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 nav:
   - 首页: index.md
   - 测试页: test.md
-
