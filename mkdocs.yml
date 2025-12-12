@@ -2,12 +2,16 @@ site_name: 小书
 site_url: https://csy01-xy.github.io/csy-ptyz-book/
 repo_name: csy-ptyz-book
 repo_url: https://github.com/csy01-xy/csy-ptyz-book
-copyright: Copyright &copy; 2025~now csy
-
+# 注意：一定要在一行里写完，不要换行
+copyright: 'Copyright &copy; 2025~present csy <br> <span id="waline-stats">正在加载统计...</span>'
 theme:
   name: material
   language: zh
   custom_dir: overrides
+  features:
+      # ... 其他 features
+      - content.code.copy
+      - content.tabs.link # 推荐：让标签页分享链接可用
 
   # 【重要】必须确保 assets 文件夹里是处理好的透明背景 logo.png
   logo: assets/logo.png
@@ -20,6 +24,11 @@ theme:
     - search.suggest
     - search.highlight
     - content.code.copy
+  # 👇 新增这三行，启用进度条的关键！
+    - navigation.instant  # 必须开启，它包含进度条的逻辑
+    - navigation.path     # 在标题上方显示当前路径
+    - toc.follow          # 右侧目录（TOC）随页面滚动自动高亮和展开
+    - navigation.tracking # 这里的地址栏 URL 会随滚动自动更新
 
   palette:
     # 亮色模式
@@ -45,6 +54,11 @@ extra_css:
 plugins:
   - search:
       lang: zh
+  - glightbox:
+      # 注意：配置项必须相对于 gLightbox 冒号后，有正确的缩进
+      touchNavigation: true
+      loop: false
+      effect: zoom
 
 markdown_extensions:
   - abbr
@@ -83,8 +97,9 @@ markdown_extensions:
 
 extra_javascript:
   - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - javascripts/waline.js
+  - javascripts/progress.js
 
 nav:
   - 首页: index.md

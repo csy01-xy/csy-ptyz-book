@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <script type="module">
+    // 这里使用绝对路径，指向您确认过的那个地址
+    import { meta } from '/csy-ptyz-book/javascripts/waline.js';
+    
+    // 把工具挂载到全局，让 progress.js 能用到
+    window.WalineMeta = meta;
+    console.log("✅ Waline 模块已强制加载成功！");
+  </script>
+{% endblock %}

@@ -1,3 +1,36 @@
+/* extra.css */
+
+/* 1. 强制锁定背景色，防止深色模式下闪白屏 */
+html, body {
+  background-color: var(--md-default-bg-color);
+  transition: background-color 0s; /* 禁用背景色的过渡动画，防止切换时闪烁 */
+}
+
+/* 2. 优化页面切换时的内容闪烁 */
+.md-content {
+  /* 保持内容区域的背景一致 */
+  background-color: var(--md-default-bg-color);
+}
+
+
+
+/* 引入 Noto Serif SC 字体 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap');
+
+/* 应用到正文 */
+body, .md-typeset {
+  /* 优先使用宋体风格，备用系统字体 */
+  font-family: "Noto Serif SC", "Merriweather", "Times New Roman", serif;
+}
+
+/* 标题保持无衬线，显得现代一点 (可选) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+
+
+
 /* ==============================================
    1. Logo 设置 
    ============================================== */
@@ -122,3 +155,111 @@
     border: none !important; 
     font-weight: bold;
 }
+
+/* ----------------------------------------------------
+ * 1. 【丝滑浮出】内容动画效果 (Fade-in Slide-up)
+ * ---------------------------------------------------- */
+
+/* 定义动画关键帧 */
+@keyframes content-fade-in {
+  0% {
+    /* 初始状态：完全隐藏 */
+    opacity: 0;
+    /* 初始状态：向上移动 15px (准备从底部浮出) */
+    transform: translateY(15px);
+  }
+  100% {
+    /* 结束状态：完全显示 */
+    opacity: 1;
+    /* 结束状态：回到原始位置 */
+    transform: translateY(0);
+  }
+}
+
+/* 针对主要的文档内容容器 (文章正文) */
+.md-content__inner {
+  /* 初始时隐藏 */
+  opacity: 0;
+  
+  /* 应用动画效果 */
+  animation-name: content-fade-in;
+  /* 动画持续时间：0.6 秒 */
+  animation-duration: 0.6s; 
+  /* 动画曲线：平滑 */
+  animation-timing-function: ease-in-out;
+  /* 动画延迟：0.1 秒 */
+  animation-delay: 0.1s; 
+  /* 动画结束后，保持结束状态 */
+  animation-fill-mode: forwards;
+}
+
+/* 【新增/修复】右侧目录 (文章目录) 同步浮出 */
+.md-sidebar--secondary {
+  /* 初始时隐藏 */
+  opacity: 0;
+
+  /* 应用相同的动画效果，实现同步 */
+  animation-name: content-fade-in;
+  animation-duration: 0.6s; 
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.1s; /* 与正文内容相同的延迟 */
+  animation-fill-mode: forwards;
+}
+
+/* 左侧目录 (主导航) 不添加任何动画代码，保持即时显示。*/
+
+
+/* 代码块 Mac 风格窗口化 */
+.md-typeset pre > code {
+  /* 给代码块增加圆角 */
+  border-radius: 8px; 
+}
+
+/* 伪造 Mac 窗口的三个小圆点 */
+.md-typeset pre::before {
+  content: "";
+  display: block;
+  background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="%23FF5F56" stroke="%23E0443E" stroke-width=".5"/><circle cx="26" cy="6" r="6" fill="%23FFBD2E" stroke="%23DEA123" stroke-width=".5"/><circle cx="46" cy="6" r="6" fill="%2327C93F" stroke="%231AAB29" stroke-width=".5"/></g></svg>') no-repeat;
+  height: 20px;
+  margin-bottom: 8px; /* 圆点和代码的距离 */
+  margin-left: 8px;   /* 左边距 */
+}
+
+/* extra.css */
+/* 让页面顶部显示一个跟随阅读进度的细条 */
+.md-header {
+  border-bottom: 2px solid var(--md-primary-fg-color); /* 简单版：加个底边框 */
+}
+
+
+
+/* Webkit 浏览器 (Chrome, Edge, Safari) 滚动条美化 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+  background-color: #b0bec5; /* 滚动条颜色，对应你的 blue grey */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #78909c; /* 鼠标悬停变深 */
+}
+
+
+/* 阅读进度条样式 */
+#reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 0%;        /* 初始宽度为 0 */
+  height: 3px;      /* 进度条厚度 */
+  background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); /* 漂亮的渐变蓝 */
+  transition: width 0.1s; /* 让变化丝滑一点 */
+  pointer-events: none; /* 让鼠标可以穿透它点击下面的内容 */
+}
+

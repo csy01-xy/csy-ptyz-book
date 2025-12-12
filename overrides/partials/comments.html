@@ -1,8 +1,7 @@
-<link rel="preload" href="https://unpkg.com/@waline/client@v3/dist/waline.css" as="style">
-<link rel="preload" href="https://unpkg.com/@waline/client@v3/dist/waline.js" as="script">
-
+<link rel="preload" href="https://unpkg.com/@waline/client@v3/dist/waline.css" as="style" crossorigin>
+<link rel="preload" href="https://unpkg.com/@waline/client@v3/dist/waline.js" as="script" crossorigin>
 <meta name="referrer" content="no-referrer" />
-<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" /> 
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
 
 <h2 id="__comments" style="
     font-weight: bold; 
@@ -16,29 +15,34 @@
 
 <div id="waline"></div>
 
-<script type="module">
-  // Waline JS 模块不变，但现在会被 preload 加速
-  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
-
-  init({
-    el: '#waline',
-    serverURL: 'https://ptyzbookcomment.zeabur.app/', 
-    lang: 'zh-CN',
-    dark: 'body[data-md-color-scheme="slate"]', 
+<script>
+  // 使用动态导入 (import) 替代 type="module"
+  // 这样能确保每次页面切换 (Instant Loading) 时，脚本都会重新执行
+  import('https://unpkg.com/@waline/client@v3/dist/waline.js').then(({ init }) => {
     
-    // 3 vs 3 对称设计
-    reaction: [
-      'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👍</text></svg>', 
-      'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😂</text></svg>', 
-      'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎉</text></svg>', 
-      'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👎</text></svg>', 
-      'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤔</text></svg>', 
-      'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😡</text></svg>', 
-    ],
-    
-    requiredMeta: ['nick'], 
-    pageview: true, 
-    placeholder: '欢迎留言 (无需登录)...',
-    emoji: false, 
+    // 初始化 Waline
+    init({
+      el: '#waline',
+      serverURL: 'https://ptyzbookcomment.zeabur.app/', 
+      lang: 'zh-CN',
+      
+      // 适配 Material 主题的深色模式自动切换
+      dark: 'body[data-md-color-scheme="slate"]', 
+      
+      // 您的自定义表情包配置 (3 vs 3 对称设计)
+      reaction: [
+        'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👍</text></svg>', 
+        'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😂</text></svg>', 
+        'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎉</text></svg>', 
+        'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👎</text></svg>', 
+        'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤔</text></svg>', 
+        'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😡</text></svg>', 
+      ],
+      
+      requiredMeta: ['nick'], 
+      pageview: true, 
+      placeholder: '欢迎留言 (无需登录)...',
+      emoji: false, 
+    });
   });
 </script>
