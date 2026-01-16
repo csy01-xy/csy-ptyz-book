@@ -3,3 +3,4 @@ mkdocs-material>=9.4.0
 mkdocs-glightbox     # 👈 必须加！这是图片灯箱插件
 jieba                # 👈 必须加！这是中文搜索分词库
 pymdown-extensions   # 👈 保持，这是扩展语法支持
+mkdocs-callouts
