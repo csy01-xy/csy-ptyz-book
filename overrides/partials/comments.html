@@ -1,3 +1,17 @@
+<link rel="dns-prefetch" href="//unpkg.com">
+<link rel="preconnect" href="//unpkg.com" crossorigin>
+<link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "v2cu37477q");
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 <link rel="preload" href="https://unpkg.com/@waline/client@v3/dist/waline.css" as="style" crossorigin>
 <link rel="preload" href="https://unpkg.com/@waline/client@v3/dist/waline.js" as="script" crossorigin>
 <meta name="referrer" content="no-referrer" />
@@ -16,20 +30,12 @@
 <div id="waline"></div>
 
 <script>
-  // 使用动态导入 (import) 替代 type="module"
-  // 这样能确保每次页面切换 (Instant Loading) 时，脚本都会重新执行
   import('https://unpkg.com/@waline/client@v3/dist/waline.js').then(({ init }) => {
-    
-    // 初始化 Waline
     init({
       el: '#waline',
       serverURL: 'https://ptyzbookcomment.zeabur.app/', 
       lang: 'zh-CN',
-      
-      // 适配 Material 主题的深色模式自动切换
       dark: 'body[data-md-color-scheme="slate"]', 
-      
-      // 您的自定义表情包配置 (3 vs 3 对称设计)
       reaction: [
         'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👍</text></svg>', 
         'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😂</text></svg>', 
@@ -38,7 +44,6 @@
         'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤔</text></svg>', 
         'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😡</text></svg>', 
       ],
-      
       requiredMeta: ['nick'], 
       pageview: true, 
       placeholder: '欢迎留言 (无需登录)...',
@@ -46,3 +51,16 @@
     });
   });
 </script>
+
+<hr style="margin-top: 3rem; border: 0; border-top: 1px solid #eee;">
+<div style="text-align: center; font-size: 0.85rem; color: #999; margin-top: 1rem; margin-bottom: 2rem;">
+  <span id="busuanzi_container_site_uv" style="display:none;">
+    👤 访客数：<span id="busuanzi_value_site_uv"></span> 人
+  </span>
+  <span style="margin: 0 10px;">|</span>
+  <span id="busuanzi_container_site_pv" style="display:none;">
+    👀 总访问量：<span id="busuanzi_value_site_pv"></span> 次
+  </span>
+</div>
+
+<script src="https://npm.elemecdn.com/instant.page@5.2.0/instantpage.js" type="module"></script>
