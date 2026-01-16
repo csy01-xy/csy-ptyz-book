@@ -2,8 +2,7 @@ site_name: 小书
 site_url: https://csy01-xy.github.io/csy-ptyz-book/
 repo_name: csy-ptyz-book
 repo_url: https://github.com/csy01-xy/csy-ptyz-book
-# 注意：一定要在一行里写完，不要换行
-copyright: 'Copyright &copy; 2025~present csy <br> <span id="waline-stats">正在加载统计...</span>'
+copyright: 'Copyright &copy; 2025~present csy'
 theme:
   name: material
   language: zh
@@ -59,6 +58,7 @@ plugins:
       touchNavigation: true
       loop: false
       effect: zoom
+  - callouts
 
 markdown_extensions:
   - abbr
@@ -98,7 +98,6 @@ markdown_extensions:
 extra_javascript:
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - javascripts/waline.js
   - javascripts/progress.js
 
 nav:
